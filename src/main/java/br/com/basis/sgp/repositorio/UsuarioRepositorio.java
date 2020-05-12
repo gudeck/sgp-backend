@@ -1,4 +1,10 @@
 package br.com.basis.sgp.repositorio;
 
-public class UsuarioRepositorio {
+import br.com.basis.sgp.dominio.Usuario;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface UsuarioRepositorio extends JpaRepository<Usuario, Long> {
+
 }

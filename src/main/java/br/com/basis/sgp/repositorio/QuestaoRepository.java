@@ -1,10 +1,10 @@
 package br.com.basis.sgp.repositorio;
 
-import br.com.basis.sgp.dominio.TipoQuestao;
+import br.com.basis.sgp.dominio.Questao;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface TipoQuestaoRepositorio extends JpaRepository<TipoQuestao, Long> {
+public interface QuestaoRepository extends JpaRepository<Questao, Long> {
 
 }
