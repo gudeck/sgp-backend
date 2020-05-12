@@ -8,42 +8,46 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-@Entity
 @Getter
 @Setter
+@Entity(name = "QUESTAO")
 public class Questao {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID", nullable = false)
     private Long id;
 
-    @Column(length = 400, nullable = false)
+    @Column(name = "DESCRICAO", nullable = false)
     private String descricao;
 
-    @Column(length = 400, nullable = false)
+    @Column(name = "ALTERNATIVA_1", nullable = false)
     private String alternativa1;
 
-    @Column(length = 400, nullable = false)
+    @Column(name = "ALTERNATIVA_2", nullable = false)
     private String alternativa2;
 
-    @Column(length = 400, nullable = false)
+    @Column(name = "ALTERNATIVA_3", nullable = false)
     private String alternativa3;
 
-    @Column(length = 400, nullable = false)
+    @Column(name = "ALTERNATIVA_4", nullable = false)
     private String alternativa4;
 
-    @Column(length = 400, nullable = false)
+    @Column(name = "ALTERNATIVA_5", nullable = false)
     private String alternativa5;
 
-    @Column(nullable = false)
+    @Column(name = "RESPOSTA", nullable = false)
     private Integer resposta;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
+    @JoinColumn(name = "ID_SENIORIDADE", nullable = false)
     private Senioridade senioridade;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
+    @JoinColumn(name = "ID_TIPO_QUESTAO", nullable = false)
     private TipoQuestao tipoQuestao;
 
 }

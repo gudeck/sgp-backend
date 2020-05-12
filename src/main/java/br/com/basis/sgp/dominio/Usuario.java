@@ -2,39 +2,36 @@ package br.com.basis.sgp.dominio;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.Email;
 
-@Entity
 @Getter
 @Setter
+@Entity(name = "USUARIO")
 public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID", nullable = false)
     private Long id;
 
-    @Column(length = 80, nullable = false)
+    @Column(name = "NOME", nullable = false)
     private String nome;
 
-    @CPF
-    @Column(length = 11, nullable = false)
+    @Column(name = "CPF", nullable = false)
     private String cpf;
 
-    @Column(length = 20, nullable = false)
+    @Column(name = "SENHA", nullable = false)
     private String senha;
 
-    @Email
-    @Column(length = 80, nullable = false)
+    @Column(name = "EMAIL", nullable = false)
     private String email;
 
-    @Column(nullable = false)
-    private Boolean admin;
+    @Column(name = "ADMIN", nullable = false)
+    private Integer admin;
 
 }

@@ -16,17 +16,17 @@ public class UsuarioRecurso {
         this.repositorio = repositorio;
     }
 
-    @GetMapping
-    public List<Usuario> listar() {
-        return this.servico.listar();
-    }
-
     @GetMapping("/{id}")
     public ResponseEntity<Usuario> buscarPorId(@PathVariable Long id) {
         Usuario usuario = servico.buscarPorId(id);
         if (usuario == null)
             return ResponseEntity.badRequest().build();
         return ResponseEntity.status(HttpStatus.OK).body(usuario);
+    }
+
+    @GetMapping
+    public List<Usuario> listar() {
+        return this.servico.listar();
     }
 
     @PostMapping
@@ -48,7 +48,7 @@ public class UsuarioRecurso {
 
     @DeleteMapping
     public ResponseEntity<Usuario> excluir(@RequestBody Usuario usuario) {
-        servico.excluir(usuario);
+//        servico.excluir(usuario);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 

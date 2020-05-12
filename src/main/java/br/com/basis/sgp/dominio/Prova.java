@@ -13,24 +13,25 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import java.util.List;
 
-@Entity
 @Getter
 @Setter
+@Entity(name = "PROVA")
 public class Prova {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID", nullable = false)
     private Long id;
 
-    @Column(length = 80, nullable = false)
+    @Column(name = "TITULO", nullable = false)
     private String titulo;
 
-    @Column(nullable = false)
+    @Column(name = "PERCENTUAL_APROVACAO", nullable = false)
     private Integer percentualAprovacao;
 
     @ManyToMany
-    @JoinTable(name = "prova_questao",
-            joinColumns = @JoinColumn(name = "id_prova"),
-            inverseJoinColumns = @JoinColumn(name = "id_questao"))
+    @JoinTable(name = "PROVA_QUESTAO",
+            joinColumns = @JoinColumn(name = "ID_PROVA"),
+            inverseJoinColumns = @JoinColumn(name = "ID_QUESTAO"))
     private List<Questao> questoes;
 }

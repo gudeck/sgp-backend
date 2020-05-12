@@ -9,16 +9,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
 @Getter
 @Setter
+@Entity(name = "SENIORIDADE")
 public class Senioridade {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID", nullable = false)
     private Long id;
 
-    @Column(length = 80, nullable = false)
+    @Column(name = "DESCRICAO", nullable = false)
     private String descricao;
 
 }
