@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/avaliacoes")
 public class AvaliacaoRecurso {
 
-    private final AvaliacaoRepositorio repositorio;
+    private AvaliacaoServico servico;
 
-    public AvaliacaoRecurso(AvaliacaoRepositorio repositorio) {
-        this.repositorio = repositorio;
+    public AvaliacaoRecurso(AvaliacaoServico servico) {
+        this.servico = servico;
     }
 }
