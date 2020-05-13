@@ -3,36 +3,31 @@ package br.com.basis.sgp.servico.impl;
 import br.com.basis.sgp.dominio.Prova;
 import br.com.basis.sgp.repositorio.ProvaRepositorio;
 import br.com.basis.sgp.servico.ProvaServico;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
+@RequiredArgsConstructor
 public class ProvaServicoImpl implements ProvaServico {
 
     private final ProvaRepositorio repositorio;
 
-    public ProvaServicoImpl(ProvaRepositorio repositorio) {
-        this.repositorio = repositorio;
-    }
-
     @Override
     public List<Prova> listar() {
-        return null;
+        return this.repositorio.findAll();
     }
 
     @Override
-    public Prova buscarPorId(Long id) {
-        return null;
+    public Prova salvar(Prova prova) {
+        return this.repositorio.save(prova);
     }
 
     @Override
-    public Prova salvar(Prova novoRegistro) {
-        return null;
-    }
-
-    @Override
-    public void excluir(Prova registro) {
-
+    public void excluir(Long id) {
+        this.repositorio.findById(id).ifPresent(this.repositorio::delete);
     }
 }

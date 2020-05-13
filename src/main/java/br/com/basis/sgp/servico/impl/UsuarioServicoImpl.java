@@ -3,18 +3,18 @@ package br.com.basis.sgp.servico.impl;
 import br.com.basis.sgp.dominio.Usuario;
 import br.com.basis.sgp.repositorio.UsuarioRepositorio;
 import br.com.basis.sgp.servico.UsuarioServico;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
+@RequiredArgsConstructor
 public class UsuarioServicoImpl implements UsuarioServico {
 
     private final UsuarioRepositorio repositorio;
-
-    public UsuarioServicoImpl(UsuarioRepositorio repositorio) {
-        this.repositorio = repositorio;
-    }
 
     @Override
     public List<Usuario> listar() {
@@ -22,17 +22,12 @@ public class UsuarioServicoImpl implements UsuarioServico {
     }
 
     @Override
-    public Usuario buscarPorId(Long id) {
-        return null;
+    public Usuario salvar(Usuario usuario) {
+        return this.repositorio.save(usuario);
     }
 
     @Override
-    public Usuario salvar(Usuario registro) {
-        return this.repositorio.save(registro);
-    }
-
-    @Override
-    public void excluir(Usuario registro) {
-        this.repositorio.delete(registro);
+    public void excluir(Long id) {
+        this.repositorio.findById(id).ifPresent(this.repositorio::delete);
     }
 }

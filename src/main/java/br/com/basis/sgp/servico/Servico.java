@@ -6,10 +6,8 @@ public interface Servico<T> {
 
     List<T> listar();
 
-    T buscarPorId(Long id);
+    T salvar(T t);
 
-    T salvar(T novoRegistro);
-
-    void excluir(T registro);
+    void excluir(Long id);
 
 }
