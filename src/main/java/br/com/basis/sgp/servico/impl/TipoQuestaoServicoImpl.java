@@ -1,8 +1,9 @@
 package br.com.basis.sgp.servico.impl;
 
-import br.com.basis.sgp.dominio.TipoQuestao;
 import br.com.basis.sgp.repositorio.TipoQuestaoRepositorio;
 import br.com.basis.sgp.servico.TipoQuestaoServico;
+import br.com.basis.sgp.servico.dto.tipoquestao.TipoQuestaoDTO;
+import br.com.basis.sgp.servico.mapper.tipoquestao.TipoQuestaoMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,18 +17,15 @@ public class TipoQuestaoServicoImpl implements TipoQuestaoServico {
 
     private final TipoQuestaoRepositorio repositorio;
 
+    private final TipoQuestaoMapper senioridadeMapper;
+
     @Override
-    public List<TipoQuestao> listar() {
-        return this.repositorio.findAll();
+    public TipoQuestaoDTO buscar(Long id) {
+        return senioridadeMapper.toDto(repositorio.getOne(id));
     }
 
     @Override
-    public TipoQuestao salvar(TipoQuestao tipoQuestao) {
-        return this.repositorio.save(tipoQuestao);
-    }
-
-    @Override
-    public void excluir(Long id) {
-        this.repositorio.findById(id).ifPresent(this.repositorio::delete);
+    public List<TipoQuestaoDTO> listar() {
+        return senioridadeMapper.toDto(repositorio.findAll());
     }
 }

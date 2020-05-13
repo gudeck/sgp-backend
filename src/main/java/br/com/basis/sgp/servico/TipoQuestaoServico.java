@@ -1,6 +1,13 @@
 package br.com.basis.sgp.servico;
 
-import br.com.basis.sgp.dominio.TipoQuestao;
+import br.com.basis.sgp.servico.dto.tipoquestao.TipoQuestaoDTO;
 
-public interface TipoQuestaoServico extends Servico<TipoQuestao> {
+import java.util.List;
+
+public interface TipoQuestaoServico {
+
+    TipoQuestaoDTO buscar(Long id);
+
+    List<TipoQuestaoDTO> listar();
+
 }
